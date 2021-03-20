@@ -19,3 +19,17 @@
 4. React.Memo()
 5. useCallback()
 6. useMemo()
+
+## router
+
+1. Route
+2. Link vs NavLink
+3. Switch
+4. useRouteMatch()
+5. useLocation()
+
+## material ui
+
+## api
+
+## form
