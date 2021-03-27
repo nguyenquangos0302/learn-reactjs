@@ -24,6 +24,7 @@ function TodoForm(props) {
   });
   const form = useForm({
     defaultValues: {
+      // need to declare all field in here
       title: "",
     },
     resolver: yupResolver(schema),
