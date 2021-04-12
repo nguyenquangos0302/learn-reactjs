@@ -1,34 +1,32 @@
-import React, { PureComponent } from "react";
-import ApprovalCard from "./ApprovalCard";
-import CommentDetails from "./CommentDetails";
-
-// function App() {
-//   window.navigator.geolocation.getCurrentPosition(
-//     (position) => {
-//       console.log(position);
-//     },
-//     (error) => console.log(error)
-//   );
-//   return (
-//     <div className="ui container comments">
-//       {/* <ApprovalCard>
-//         <CommentDetails />
-//       </ApprovalCard>
-//       <CommentDetails />
-//       <CommentDetails /> */}
-//     </div>
-//   );
-// }
+import React, { PureComponent } from 'react';
+import SeasonDisplay from './SeasonDisplay';
 
 class App extends PureComponent {
-  render() {
+  state = { lat: null, errorMessage: '' };
+
+  componentDidMount() {
     window.navigator.geolocation.getCurrentPosition(
       (position) => {
-        console.log(position);
+        this.setState({ lat: position.coords.latitude });
       },
-      (error) => console.log(error)
+      (error) => {
+        this.setState({ errorMessage: error.message });
+      }
     );
-    return <div>Latitude: {}</div>;
+  }
+
+  componentDidUpdate() {}
+
+  render() {
+    if (this.state.errorMessage || this.state.lat) {
+      if (this.state.errorMessage && !this.state.lat) {
+        return <div>Error: {this.state.errorMessage}</div>;
+      } else {
+        return <SeasonDisplay lat={this.state.lat} />;
+      }
+    } else {
+      return <div>Loading</div>;
+    }
   }
 }
 
