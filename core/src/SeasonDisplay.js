@@ -1,4 +1,16 @@
 import React from 'react';
+import 'semantic-ui-css/semantic.min.css';
+
+const seasonConfig = {
+  summer: {
+    text: 'Lets hit the beach!',
+    icon: 'sun',
+  },
+  winter: {
+    text: 'Burr, it is chilly',
+    icon: 'snowflake',
+  },
+};
 
 const getSeason = (lat, month) => {
   if (month > 2 && month < 9) {
@@ -10,9 +22,15 @@ const getSeason = (lat, month) => {
 
 const SeasonDisplay = (props) => {
   const { lat } = props;
-  console.log(season);
   const season = getSeason(lat, new Date().getMonth());
-  return <div>Season</div>;
+  const { text, icon } = seasonConfig[season];
+
+  return (
+    <div>
+      <i className={`${icon} loading icon`}></i>
+      <h1>{text}</h1>
+    </div>
+  );
 };
 
 export default SeasonDisplay;
