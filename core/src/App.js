@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import SeasonDisplay from './SeasonDisplay';
+import Spinner from './Spinner';
 
 class App extends PureComponent {
   state = { lat: null, errorMessage: '' };
@@ -17,7 +18,7 @@ class App extends PureComponent {
 
   componentDidUpdate() {}
 
-  render() {
+  renderContent() {
     if (this.state.errorMessage || this.state.lat) {
       if (this.state.errorMessage && !this.state.lat) {
         return <div>Error: {this.state.errorMessage}</div>;
@@ -25,8 +26,12 @@ class App extends PureComponent {
         return <SeasonDisplay lat={this.state.lat} />;
       }
     } else {
-      return <div>Loading</div>;
+      return <Spinner message="Allow Please" />;
     }
+  }
+
+  render() {
+    return <div>{this.renderContent()}</div>;
   }
 }
 
