@@ -19,6 +19,7 @@
 4. React.Memo()
 5. useCallback()
 6. useMemo()
+7. useRef()
 
 ## router
 

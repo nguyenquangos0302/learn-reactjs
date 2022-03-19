@@ -3,6 +3,7 @@ import PostFeature from "./features/PostFeature";
 import TodoFeature from "./features/TodoFeature";
 import ClockFeature from "./features/ClockFeature";
 import ColorHook from "./features/ColorHook";
+import CountFeature from "./features/CountFeature";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <PostFeature />
       <ClockFeature />
       <ColorHook />
+      <CountFeature />
     </div>
   );
 }
